@@ -155,25 +155,25 @@ void SLList::deleteallnode(int num)
     {
         if (curr->data == num)
         {
-            if (curr == head)  // Deleting head node
+            if (curr == head)
             {
                 Node *temp = head;
                 head = head->next;
                 delete temp;
-                if (head == nullptr) { // If the list becomes empty
+                if (head == nullptr) { 
                     tail = nullptr;
                 }
-                curr = head; // Move to next node
+                curr = head; 
             }
-            else if (curr == tail)  // Deleting tail node
+            else if (curr == tail)  
             {
                 Node *temp = tail;
                 tail = pre;
-                tail->next = nullptr; // Ensure last node points to null
+                tail->next = nullptr;
                 delete temp;
-                curr = nullptr; // End loop since tail is deleted
+                curr = nullptr; 
             }
-            else  // Deleting a middle node
+            else  
             {
                 pre->next = curr->next;
                 Node *temp = curr;
@@ -181,7 +181,7 @@ void SLList::deleteallnode(int num)
                 delete temp;
             }
         }
-        else  // Move forward when not deleting
+        else  
         {
             pre = curr;
             curr = curr->next;
@@ -208,25 +208,24 @@ SLList::SLList(const SLList &obj)
     head = nullptr;
     tail = nullptr;
 
-    if (obj.head == nullptr) {  // If the original list is empty
+    if (obj.head == nullptr) {  
         return;
     }
 
     Node *curr = obj.head;
     while (curr) {
-        // Create a new node with the same data
         Node *newNode = new Node();
         newNode->data = curr->data;
         newNode->next = nullptr;
 
-        if (head == nullptr) {  // First node (head)
+        if (head == nullptr) {  
             head = newNode;
             tail = newNode;
-        } else {  // Attach to the tail
+        } else { 
             tail->next = newNode;
             tail = newNode;
         }
 
-        curr = curr->next;  // Move to the next node in the original list
+        curr = curr->next;  
     }
 }
