@@ -99,3 +99,46 @@ void SLList::deleteatTail()
     temp->next=nullptr;
     tail=temp;
 }
+
+void SLList::deletenode(int num)
+{
+    if (isEmpty())
+    {
+        return;
+    }
+    if (head==tail)
+    {
+        if (head->data==num)
+        {
+            head=tail=nullptr;
+        }
+        else
+        {
+            return;
+        }
+    }
+    if (head->data==num){
+        Node *temp{head};
+        head= temp->next;
+        delete temp;
+        return;
+    }
+
+    Node *pre{head};
+    Node *curr{head->next};
+    while (curr)
+    {
+        if(curr->data==num)
+        {
+            pre->next=curr->next;
+            if(curr=tail){
+                tail=pre;
+            }
+            delete curr;
+            return;
+        }
+        pre=curr;
+        curr=curr->next;
+    }
+    
+}

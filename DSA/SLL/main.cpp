@@ -58,6 +58,13 @@ int main()
     cout << "List after deleting from tail: ";
     list.display();
     cout << endl;
+
+    cout << "Deleting Node..." << endl;
+    list.deletenode(10);
+    
+    cout << "List after deleting Node: ";
+    list.display();
+    cout << endl;
     
     return 0;
 }
