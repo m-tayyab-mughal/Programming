@@ -21,6 +21,34 @@ bool SLList ::find(int num)
     return false;
 }
 
+void SLList::display()
+{
+    Node *temp=head;
+    if(isEmpty())
+    {
+        cout<<"List is Empty"<<endl;
+    }
+    while (temp)
+    {
+        cout<<temp->data<<" -> ";
+        temp=temp->next;
+    }
+    cout<<"NULL";
+}
+
+void SLList::clearlist()
+{
+    Node *curr = head;
+    while (curr) 
+    {
+        Node *temp = curr;
+        curr = curr->next;  
+        delete temp;        
+    }
+
+    head = nullptr;
+    tail = nullptr;
+}
 void SLList::insertatHead(int num)
 {
     Node* newNode = new Node(num);
@@ -43,24 +71,10 @@ void SLList::insertatTail(int num)
     }
     else{
         tail->next=newNode;
-        tail=tail->next;
+        tail=newNode;
     }
 }
 
-void SLList::display()
-{
-    Node *temp=head;
-    if(isEmpty())
-    {
-        cout<<"List is Empty"<<endl;
-    }
-    while (temp)
-    {
-        cout<<temp->data<<" -> ";
-        temp=temp->next;
-    }
-    cout<<"NULL";
-}
 
 void SLList::deleteatHead()
 {
@@ -71,7 +85,9 @@ void SLList::deleteatHead()
     Node *temp{head};
     if(head==tail)
     {
+        delete head;
         head=tail=nullptr;
+        return;
     }
     else{
         head=head->next;
@@ -131,7 +147,7 @@ void SLList::deletenode(int num)
         if(curr->data==num)
         {
             pre->next=curr->next;
-            if(curr=tail){
+            if(curr==tail){
                 tail=pre;
             }
             delete curr;
@@ -189,19 +205,6 @@ void SLList::deleteallnode(int num)
     }
 }
 
-void SLList::clearlist()
-{
-    Node *curr = head;
-    while (curr) 
-    {
-        Node *temp = curr;
-        curr = curr->next;  
-        delete temp;        
-    }
-
-    head = nullptr;
-    tail = nullptr;
-}
 
 SLList::SLList(const SLList &obj)
 {

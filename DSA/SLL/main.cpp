@@ -17,7 +17,12 @@ int main()
     list.insertatHead(10);
     list.insertatTail(20);
     list.insertatTail(30);
-    list.insertatHead(5);
+    list.insertatHead(50);
+    list.insertatHead(60);
+    list.insertatHead(125);
+    list.insertatHead(56);
+    list.insertatHead(75);
+
     
     cout << "Current list: ";
     list.display();
@@ -60,9 +65,14 @@ int main()
     cout << endl;
 
     cout << "Deleting Node..." << endl;
-    list.deletenode(10);
+    list.deletenode(125);
     
     cout << "List after deleting Node: ";
+    list.display();
+    cout << endl;
+
+    list.clearlist();
+    cout << "List after Clear: ";
     list.display();
     cout << endl;
     
