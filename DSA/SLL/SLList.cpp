@@ -142,3 +142,91 @@ void SLList::deletenode(int num)
     }
     
 }
+void SLList::deleteallnode(int num)
+{
+    if (isEmpty()) {
+        return;
+    }
+    
+    Node *pre = nullptr;
+    Node *curr = head;
+
+    while (curr) 
+    {
+        if (curr->data == num)
+        {
+            if (curr == head)  // Deleting head node
+            {
+                Node *temp = head;
+                head = head->next;
+                delete temp;
+                if (head == nullptr) { // If the list becomes empty
+                    tail = nullptr;
+                }
+                curr = head; // Move to next node
+            }
+            else if (curr == tail)  // Deleting tail node
+            {
+                Node *temp = tail;
+                tail = pre;
+                tail->next = nullptr; // Ensure last node points to null
+                delete temp;
+                curr = nullptr; // End loop since tail is deleted
+            }
+            else  // Deleting a middle node
+            {
+                pre->next = curr->next;
+                Node *temp = curr;
+                curr = curr->next;
+                delete temp;
+            }
+        }
+        else  // Move forward when not deleting
+        {
+            pre = curr;
+            curr = curr->next;
+        }
+    }
+}
+
+void SLList::clearlist()
+{
+    Node *curr = head;
+    while (curr) 
+    {
+        Node *temp = curr;
+        curr = curr->next;  
+        delete temp;        
+    }
+
+    head = nullptr;
+    tail = nullptr;
+}
+
+SLList::SLList(const SLList &obj)
+{
+    head = nullptr;
+    tail = nullptr;
+
+    if (obj.head == nullptr) {  // If the original list is empty
+        return;
+    }
+
+    Node *curr = obj.head;
+    while (curr) {
+        // Create a new node with the same data
+        Node *newNode = new Node();
+        newNode->data = curr->data;
+        newNode->next = nullptr;
+
+        if (head == nullptr) {  // First node (head)
+            head = newNode;
+            tail = newNode;
+        } else {  // Attach to the tail
+            tail->next = newNode;
+            tail = newNode;
+        }
+
+        curr = curr->next;  // Move to the next node in the original list
+    }
+}

@@ -18,6 +18,7 @@ class SLList
     void display();
     bool isEmpty();
     bool find(int);
-    
-
+    void deleteallnode(int);
+    void clearlist();
+    SLList(const SLList &obj);
 };
