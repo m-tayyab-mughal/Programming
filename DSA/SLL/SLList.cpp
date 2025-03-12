@@ -204,6 +204,27 @@ void SLList::deleteallnode(int num)
         }
     }
 }
+void SLList::reverse()
+{
+    if (isEmpty() || head == tail)
+        return;
+
+    Node *prev = nullptr;
+    Node *curr = head;
+    Node *next = nullptr;
+
+    while (curr != nullptr)
+    {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+
+    tail = head;  
+    head = prev;  
+}
+
 
 
 SLList::SLList(const SLList &obj)

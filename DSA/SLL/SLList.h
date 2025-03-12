@@ -20,5 +20,6 @@ class SLList
     bool find(int);
     void deleteallnode(int);
     void clearlist();
+    void reverse();
     SLList(const SLList &obj);
 };

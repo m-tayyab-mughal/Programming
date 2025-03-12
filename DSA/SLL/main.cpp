@@ -71,6 +71,15 @@ int main()
     list.display();
     cout << endl;
 
+    cout << "Current list: ";
+    list.display();
+    cout << endl;
+
+    cout << "Reverse list: ";
+    list.reverse();
+    list.display();
+    cout << endl;
+
     list.clearlist();
     cout << "List after Clear: ";
     list.display();
