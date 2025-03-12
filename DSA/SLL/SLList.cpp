@@ -85,8 +85,9 @@ void SLList::deleteatHead()
     Node *temp{head};
     if(head==tail)
     {
-        delete head;
+        
         head=tail=nullptr;
+        delete temp;
         return;
     }
     else{
