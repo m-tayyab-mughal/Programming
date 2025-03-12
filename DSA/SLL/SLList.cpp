@@ -102,12 +102,14 @@ void SLList::deleteatTail()
     {
         return;
     }
+     Node *temp{head};
     if(head == tail) {
-        delete head;
+        
         head = tail = nullptr;
+        delete temp;
         return;
     }
-    Node *temp{head};
+    
     while(temp->next->next!=nullptr)
     {
         temp=temp->next;
