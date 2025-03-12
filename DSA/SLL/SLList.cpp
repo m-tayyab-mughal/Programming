@@ -96,27 +96,24 @@ void SLList::deleteatHead()
         return ;
     }
 }
-void SLList::deleteatTail()
-{   
-    if(isEmpty())
-    {
-        return;
-    }
-     Node *temp{head};
-    if(head == tail) {
-        
+void SLList::deleteatTail() {   
+    if (isEmpty()) return;
+
+    if (head == tail) {
+        delete head;
         head = tail = nullptr;
-        delete temp;
         return;
     }
+
+    Node* temp = head;
     
-    while(temp->next->next!=nullptr)
-    {
-        temp=temp->next;
+    while (temp->next != tail) { 
+        temp = temp->next;
     }
-    delete temp->next;
-    temp->next=nullptr;
-    tail=temp;
+
+    delete tail;      
+    tail = temp;     
+    tail->next = nullptr; 
 }
 
 void SLList::deletenode(int num)
